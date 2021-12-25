@@ -1,11 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { createGlobalStyle } from 'styled-components';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+  }
+`
+
 ReactDOM.render(
   <React.StrictMode>
+    <GlobalStyle />
     <App />
   </React.StrictMode>,
   document.getElementById('root')

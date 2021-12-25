@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Container from './components/container';
+import Box from './components/box';
+import ShowButtonsToggle from './components/show-buttons-toggle';
+import DisappearingButton, { buttonSides } from './components/disappearing-button';
 
 function App() {
+  const [isShowingButtons, setIsShowingButtons] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Container>
+      <Box>
+        <ShowButtonsToggle
+          onClick={() => setIsShowingButtons(!isShowingButtons)}
+          isShowingButtons={isShowingButtons}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          {`${isShowingButtons ? 'Hide' : 'Show'} buttons`}
+        </ShowButtonsToggle>
+        <DisappearingButton
+          side={buttonSides.top}
+          isShowingButtons={isShowingButtons}
+          inactiveColor='#6db322'
+          activeColor='#6ed402'
+        />
+        <DisappearingButton
+          side={buttonSides.bottom}
+          isShowingButtons={isShowingButtons}
+          inactiveColor='#23a095'
+          activeColor='#0bd6c5'
+        />
+      </Box>
+    </Container>
   );
 }
 
